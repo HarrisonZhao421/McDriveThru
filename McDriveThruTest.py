@@ -42,6 +42,7 @@ class Ui_MainWindow(object):
 
         self.btn1.clicked.connect(self.clicked)
 
+        self.cbx1.addItem('Everyday')
         self.cbx1.addItem('Monday')
         self.cbx1.addItem('Tuesday')
         self.cbx1.addItem('Wednesday')
@@ -49,14 +50,14 @@ class Ui_MainWindow(object):
         self.cbx1.addItem('Friday')
         self.cbx1.addItem('Saturday')
         self.cbx1.addItem('Sunday')
-        self.cbx1.addItem('Everyday')
 
-        self.cbx2.addItem('4am - 11am')
-        self.cbx2.addItem('11am - 2pm')
-        self.cbx2.addItem('2pm - 4pm')
-        self.cbx2.addItem('4pm - 9pm')
-        self.cbx2.addItem('9pm - 12am')
-        self.cbx2.addItem('12am - 4am')
+        self.cbx2.addItem('Whole Day')
+        self.cbx2.addItem('4am-11am')
+        self.cbx2.addItem('11am-2pm')
+        self.cbx2.addItem('2pm-4pm')
+        self.cbx2.addItem('4pm-9pm')
+        self.cbx2.addItem('9pm-12am')
+        self.cbx2.addItem('12am-4am')
 
     
     def clicked(self):
