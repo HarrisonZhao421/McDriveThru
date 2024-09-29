@@ -61,7 +61,9 @@ class Ui_MainWindow(object):
 
     
     def clicked(self):
-        Graph()
+        Graph(str(self.cbx1.currentText()), str(self.cbx2.currentText()))
+        print(self.cbx1.currentText())
+        print(self.cbx2.currentText())
 
 
     def retranslateUi(self, MainWindow):
