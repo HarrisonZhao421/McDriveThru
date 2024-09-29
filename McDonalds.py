@@ -7,29 +7,21 @@ import matplotlib.dates as mdates
 import datetime as dt
 
 def Graph():
-    with open(r"McDonalds.csv") as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        df = pd.DataFrame([csv_reader], index=None)
-        df.head()
+    df = pd.read_csv('McDonalds.csv')
 
-    guestCountTotal = []
-    dates = []
-    total = 0
-    date = list(df[1])[0][0]
-    for row in range(1, 5959):
-        for val in list(df[row]):
-            if date != val[0]:
-                dates.append(date)
-                guestCountTotal.append(total)
-                date = val[0]
-                total = 0
-            total += int(val[6])
+    data = dict()
+    dateList = df["Date"]
+    dates = list(set(dateList))
+    for date in dates:
+        data[date] = 0
 
-    #dates.append()
-    #guestCountTotal.append(total)
+    DTGCList = df["DT GC"]
 
-    x = [dt.datetime.strptime(d,'%m/%d/%Y').date() for d in dates]
-    y = np.array(guestCountTotal)
+    for i in range(0, len(DTGCList)):
+        data[dateList[i]] += DTGCList[i]
+
+    x = [dt.datetime.strptime(d,'%m/%d/%Y').date() for d in data.keys()]
+    y = data.values()
 
     plt.gca().xaxis.set_major_locator(mdates.MonthLocator(interval=3))
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%b/%Y'))
@@ -39,3 +31,22 @@ def Graph():
     plt.gcf().autofmt_xdate()
     plt.show()
 
+if __name__ == "__main__":
+    df = pd.read_csv('McDonalds.csv')
+
+    data = dict()
+    dateList = df["Date"]
+    dates = list(set(dateList))
+    for date in dates:
+        data[date] = 0
+
+    DTGCList = df["DT GC"]
+
+    for i in range(0, len(DTGCList)):
+        data[dateList[i]] += DTGCList[i]
+    
+    x = [dt.datetime.strptime(d,'%m/%d/%Y').date() for d in data.keys()]
+    y = np.array(data.values())
+    print(len(dates))
+    print(len(x))
+    print(len(data.values()))
