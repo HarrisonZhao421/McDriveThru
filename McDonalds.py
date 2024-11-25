@@ -8,7 +8,7 @@ import datetime as dt
 from collections import OrderedDict
 
 def Graph(day, time):
-    df = pd.read_csv('McDonalds.csv')
+    df = pd.read_csv('McDonaldsTest.csv')
 
     data = dict()
     dateList = df["Date"]
@@ -49,7 +49,7 @@ def Graph(day, time):
     plt.show()
 
 if __name__ == "__main__":
-    df = pd.read_csv('McDonalds.csv')
+    df = pd.read_csv('McDonaldsTest.csv')
     day = None
     time = None
     data = dict()
@@ -72,12 +72,13 @@ if __name__ == "__main__":
     else:
         filterList = df.loc[ (df['Time Slice'] == '4am-11am') & (df["Weekday"] == "Sunday") ].index.tolist()
 
-    print(filterList)
+    #print(filterList)
     for i in filterList:
         data[ dateList[i] ] = 0
     
     for i in filterList:
         data[ dateList[i] ] += DTGCList[i]
+        #print(DTGCList[i])
 
     x = [dt.datetime.strptime(d,'%m/%d/%Y').date() for d in data.keys()]
     y = data.values()
