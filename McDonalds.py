@@ -7,6 +7,7 @@ import matplotlib.dates as mdates
 import datetime as dt
 from collections import OrderedDict
 
+#tests
 def Graph(day, time):
     df = pd.read_csv('McDonaldsTest.csv')
 
